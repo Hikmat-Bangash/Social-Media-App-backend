@@ -59,7 +59,7 @@ export const login = async (req, res) => {
     // checking if username is matching or not
     if (user) {
       // after usename is matched then checking password
-      const validity = bcrypt.compare(password, user.password);
+      const validity = await bcrypt.compare(password, user.password);
       // const validity = password == dbPassword;
       if (validity) {
         const token = jwt.sign(
