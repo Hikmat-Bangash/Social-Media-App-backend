@@ -15,19 +15,10 @@ export const RegisterUser = async (req, res) => {
 
       const NewUser = await UserModel(req.body);
       const user = await NewUser.save();
-      const token = jwt.sign(
-        {
-          email: user.username,
-          name: user.firstname,
-          id: user._id,
-        },
-        "HIKMATKHANBANGASH12345",
-        { expiresIn: "1h" }
-      );
 
       res.status(200).json(user, token);
     } else {
-      res.status(401).json("THis username already registered");
+      res.status(401).json("This username already registered");
     }
   } catch (error) {
     res.status(500).json(error);
