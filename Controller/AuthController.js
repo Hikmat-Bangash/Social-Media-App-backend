@@ -16,7 +16,7 @@ export const RegisterUser = async (req, res) => {
       const NewUser = await UserModel(req.body);
       const user = await NewUser.save();
 
-      res.status(200).json(user, token);
+      res.status(200).json(user);
     } else {
       res.status(401).json("This username already registered");
     }
